@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211202640) do
+ActiveRecord::Schema.define(version: 20131211210958) do
+
+  create_table "friends", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "avatar"
+    t.string   "persona_state"
+    t.string   "profile_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "steam_id"
+  end
+
+  add_index "friends", ["user_id"], name: "index_friends_on_user_id"
 
   create_table "profiles", force: true do |t|
     t.string   "name"
