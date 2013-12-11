@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211182800) do
+ActiveRecord::Schema.define(version: 20131211191919) do
+
+  create_table "profiles", force: true do |t|
+    t.string   "name"
+    t.string   "steam_id"
+    t.string   "avatar"
+    t.string   "avatar_medium"
+    t.string   "avatar_full"
+    t.string   "persona_state"
+    t.string   "profile_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "provider"
