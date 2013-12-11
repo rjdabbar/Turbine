@@ -16,6 +16,7 @@ class Profile < ActiveRecord::Base
       profile.avatar_full = hash["avatarfull"]
       profile.persona_state = hash["personastate"]
       profile.profile_url = hash["profileurl"]
+      profile.user_id = user.id
     end
   end
 
