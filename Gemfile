@@ -35,6 +35,8 @@ end
 gem 'omniauth-steam'
 gem 'figaro'
 
+gem 'sidekiq'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
