@@ -2,8 +2,4 @@
 
 <%= image_tag @profile.avatar_full %> <br>
 
-
-<% @friend_list.each do |friend| %>
-  <%= image_tag friend.avatar %>
-  <%= link_to friend.name, friend.profile_url %><br>
-<% end %>
+<%= render 'friendlist' %>
