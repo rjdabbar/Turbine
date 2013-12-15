@@ -14,7 +14,7 @@ class Friend < ActiveRecord::Base
 end
   
   def self.create_friend_with(friend_id, user_id)
-     url = URI.parse(URI.encode("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{ENV['STEAM_WEB_API_KEY']}&steamids=#{id}"))
+     url = URI.parse(URI.encode("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{ENV['STEAM_WEB_API_KEY']}&steamids=#{friend_id}"))
     res = Net::HTTP::get(url)
     parse = JSON.parse(res)
     hash = parse["response"]["players"].first
@@ -27,6 +27,17 @@ end
       friend.profile_url = hash["profileurl"]
       friend.user_id = user_id
     end
+
+end
+
+def self.get_friend_list_for(user)
+  all_friends = Friend.all
+  friends =[]
+  all_friends.each do |f|
+    if f.user_id = user.id
+      friends << f
+    end
+  end
 
 end
 
