@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211210958) do
+ActiveRecord::Schema.define(version: 20131215224410) do
 
   create_table "friends", force: true do |t|
     t.integer  "user_id"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 20131211210958) do
   end
 
   add_index "friends", ["user_id"], name: "index_friends_on_user_id"
+
+  create_table "games", force: true do |t|
+    t.integer  "user_id"
+    t.string   "game_id"
+    t.string   "name"
+    t.string   "logo_url"
+    t.string   "icon_url"
+    t.string   "playtime_life"
+    t.string   "playtime_2weeks"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "games", ["user_id"], name: "index_games_on_user_id"
 
   create_table "profiles", force: true do |t|
     t.string   "name"
