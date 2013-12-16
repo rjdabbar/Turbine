@@ -31,15 +31,18 @@ end
 end
 
 def self.get_friend_list_for(user)
-  all_friends = Friend.all
-  friends =[]
-  all_friends.each do |f|
-    if f.user_id = user.id
-      friends << f
+  all_friends = Friend.all.uniq!
+  users_friends =[]
+  all_friends.each do |friend|
+    if friend.user_id = user.id
+      users_friends << friend
     end
   end
-
+  all_friends.order("name")
 end
+
+
+
 
 
 
