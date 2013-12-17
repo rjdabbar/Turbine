@@ -11,6 +11,7 @@ class Game < ActiveRecord::Base
       if game_hash["name"].ends_with?("Test", "Beta", "Tool")
       else
         create! do |game|
+          game.user_id = user.id
           game.game_id = game_hash["appid"]
           game.name = game_hash["name"]
           game.logo_url = "http://media.steampowered.com/steamcommunity/public/images/apps/#{game_hash["appid"]}/#{game_hash["img_logo_url"]}.jpg"
