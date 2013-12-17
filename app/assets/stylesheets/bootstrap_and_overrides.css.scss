@@ -1,7 +1,11 @@
 
-$sansFontFamily: tahoma;
-$serifFontFamily: tahoma;
+$font-family-base: Tahoma;
 
 
 @import 'bootstrap';
 
+.mygrid-wrapper-div{
+  overflow: scroll;
+  height: 300px;
+  width: 205px
+}

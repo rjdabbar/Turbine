@@ -1,3 +1,14 @@
-<% @game_list.each do |game| %>
-  <%= image_tag game.logo_url %>
-<% end %>
+
+
+<div class="mygrid-wrapper-div">
+  <table class="table table-bordered">
+    <thead><tr>
+      <th>GAMES</th>
+    </tr></thead>
+    <tbody>
+      <% @game_list.sort.each do |game| %>
+        <tr><td><%= image_tag game.logo_url %></tr></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
