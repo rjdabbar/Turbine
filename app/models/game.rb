@@ -1,5 +1,6 @@
 class Game < ActiveRecord::Base
   belongs_to :user
+  has_many :stats
 
   def self.make_list_for(user)
     url = URI.parse(URI.encode("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=#{ENV['STEAM_WEB_API_KEY']}&steamid=#{user.uid}&format=json&include_appinfo=1"))
@@ -20,6 +21,7 @@ class Game < ActiveRecord::Base
           if game_hash.include?(["playtime_2weeks"])
             game.playtime_2weeks = game_hash["playtime_2weeks"]
           end
+          game.stats = Stat.set_stats_for(user, game)
         end
       end
     end
@@ -35,8 +37,5 @@ class Game < ActiveRecord::Base
     end
     users_games.uniq {|g| g.name}
   end
-
-
-
 
 end
