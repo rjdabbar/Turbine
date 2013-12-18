@@ -3,4 +3,8 @@
     <h1><%= @game.name %></h1>
     <%= image_tag @game.logo_url %>
   </div>
+
+  <% @game.stats.each do |stat| %>
+    <br><%= stat.name %>: <%= stat.value %>
+  <% end %>
 </div>
