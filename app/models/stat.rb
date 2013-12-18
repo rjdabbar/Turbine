@@ -3,7 +3,7 @@ class Stat < ActiveRecord::Base
   belongs_to :game
 
   def  self.set_stats_for(user, game)
-    url = URI.parse(URI.encode("http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=#{game.game_id}&key=#{ENV['STEAM_WEB_API_KEY']}&steamid=#{user.uid}"))
+    url = URI.parse("http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=#{game.game_id}&key=#{ENV['STEAM_WEB_API_KEY']}&steamid=#{user.uid}")
     res = Net::HTTP::get(url)
     parse = JSON.parse(res)
     stats_array = parse["playerstats"]["stats"]
@@ -18,12 +18,9 @@ class Stat < ActiveRecord::Base
     end
   end
 
-  def self.get_stats_for_user(user)
-    stats = Stat.find_by_user_id(user).all
+  def self.check_for_has_stats(game)
+    
   end
 
-  def self.get_stats_for_game(game)
-    stats = Stat.find_by_game_id(game).all
-  end
 
 end

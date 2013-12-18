@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218003210) do
+ActiveRecord::Schema.define(version: 20131218020243) do
+
+  create_table "achievements", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.string   "name"
+    t.integer  "achieved"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "achievements", ["game_id"], name: "index_achievements_on_game_id"
+  add_index "achievements", ["user_id"], name: "index_achievements_on_user_id"
 
   create_table "friends", force: true do |t|
     t.integer  "user_id"

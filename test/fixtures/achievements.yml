@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  game_id: 
+  name: MyString
+  achieved: 1
+
+two:
+  user_id: 
+  game_id: 
+  name: MyString
+  achieved: 1

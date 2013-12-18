@@ -1,9 +1,10 @@
 class Game < ActiveRecord::Base
   belongs_to :user
   has_many :stats
+  has_many :achievements
 
   def self.make_list_for(user)
-    url = URI.parse(URI.encode("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=#{ENV['STEAM_WEB_API_KEY']}&steamid=#{user.uid}&format=json&include_appinfo=1"))
+    url = URI.parse(URI.encode("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=#{ENV['STEAM_WEB_API_KEY']}&steamid=#{user.uid}&format=json&include_appinfo=1&include_played_free_games=1"))
     res = Net::HTTP::get(url)
     parse = JSON.parse(res)
     game_list_array = parse["response"]["games"]
@@ -21,7 +22,7 @@ class Game < ActiveRecord::Base
           if game_hash.include?(["playtime_2weeks"])
             game.playtime_2weeks = game_hash["playtime_2weeks"]
           end
-          game.stats = Stat.set_stats_for(user, game)
+          # game.stats = Stat.set_stats_for(user, game)
         end
       end
     end
