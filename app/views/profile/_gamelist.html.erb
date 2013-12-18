@@ -1,13 +1,13 @@
 
 
 <div class="mygrid-wrapper-div">
-  <table class="table table-bordered">
+  <table class="table table-bordered table-hover">
     <thead><tr>
       <th>GAMES</th>
     </tr></thead>
     <tbody>
       <% @game_list.sort.each do |game| %>
-        <tr><td><%= image_tag game.logo_url %></tr></td>
+        <tr><td><%= link_to image_tag(game.logo_url), game %></tr></td>
       <% end %>
     </tbody>
   </table>
