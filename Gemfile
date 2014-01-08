@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'http://gems.github.com/'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
@@ -43,6 +44,8 @@ gem 'omniauth-steam'
 gem 'figaro'
 
 gem 'sidekiq'
+
+gem 'googlecharts'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: http://gems.github.com/
   specs:
     actionmailer (4.0.1)
       actionpack (= 4.0.1)
@@ -58,6 +59,7 @@ GEM
       bundler (~> 1.0)
       rails (>= 3, < 5)
     formatador (0.2.4)
+    googlecharts (1.6.8)
     guard (2.2.5)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -183,6 +185,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.0.3.0)
   coffee-rails (~> 4.0.0)
   figaro
+  googlecharts
   guard-livereload
   jbuilder (~> 1.2)
   jquery-rails

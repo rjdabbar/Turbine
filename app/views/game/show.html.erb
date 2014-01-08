@@ -1,8 +1,17 @@
+
+
 <div class="container">
   <div class="jumbotron">
     <h1><%= @game.name %></h1>
     <%= image_tag @game.logo_url %>
   </div>
+
+<%= image_tag Gchart.bar(:size => '400x400', 
+            :title => "stats",
+            :bg => 'efefef',
+            :legend => ['first data set label', 'second data set label'],
+            :data => [10, 30, 120, 45, 72])
+ %>
 
   <% @game.stats.each do |stat| %>
     <br><%= stat.name %>: <%= stat.value %>
