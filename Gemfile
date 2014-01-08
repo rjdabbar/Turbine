@@ -44,7 +44,7 @@ end
 gem 'omniauth-steam'
 gem 'figaro'
 
-gem 'sidekiq'
+
 
 gem 'googlecharts'
 
