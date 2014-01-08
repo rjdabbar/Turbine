@@ -1,6 +1,10 @@
 
 
 <%= @profile.name %><br>
+<div class="pull-right">
+  <%= link_to "Stats Manager", stats_path %>
+
+</div>
 
 <%= image_tag @profile.avatar_full %>
 
@@ -10,4 +14,5 @@
 <p><%= render 'gamelist' %></p>
 
 <p><%= render 'friendlist' %></p>
+
 

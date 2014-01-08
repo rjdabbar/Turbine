@@ -1,0 +1,15 @@
+<h1>Stats Manager</h1>
+
+<h3>These are your games that have stats</h3>
+
+<p><%= render 'games_with_stats' %></p>
+
+<div class="pull-right">
+  <%= image_tag Gchart.pie(
+    :size => '400x400', 
+    :title => "example title",
+    :bg => 'aaaaaa',
+    :legend => ['first data set label', 'second data set label'],
+    :data => [10, 30, 120, 45, 72])
+   %>
+</div>

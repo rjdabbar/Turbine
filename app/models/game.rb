@@ -39,4 +39,16 @@ class Game < ActiveRecord::Base
     users_games.uniq {|g| g.name}
   end
 
+  def self.get_games_with_stats_for(user)
+        all_games = Game.all.uniq!
+    users_games =[]
+    all_games.each do |game|
+      if game.user_id = user.id
+        if !game.stats.empty?
+          users_games << game
+        end
+      end
+    end
+    users_games.uniq {|g| g.name}
+  end
 end

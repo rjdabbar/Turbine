@@ -3,4 +3,5 @@ Turbine::Application.routes.draw do
   post "/auth/:provider/callback" => "sessions#create"
   resources :profile, only: [:show, :create]
   resources :game, only: [:show, :index]
+  resources :stats
 end
