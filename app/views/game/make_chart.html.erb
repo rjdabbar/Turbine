@@ -1,0 +1,15 @@
+<div class="pull-right">
+  <%= image_tag Gchart.bar(
+  type: "bar",
+  bg: "aaaaaa",
+  title: "Day of Defeat: Source",
+  size: "500x500",
+  legend: @stat_hash.keys,
+  value: @stat_hash.values,
+  max_value: 'auto'
+   )
+ %>
+</div>
+
+
+ <%= @stat_hash %>

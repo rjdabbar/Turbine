@@ -41,6 +41,19 @@ class Stat < ActiveRecord::Base
     end
   end
 
+  def self.get_stats_array_for_chart(game)
+    name_array =[]
+    value_array = []
+    stat_array = [name_array, value_array]
+
+    game.stats.sort.each do |stat|
+      name_array << stat.name
+      value_array << stat.value
+    end
+
+    stat_array
+  end
+
 
 
 

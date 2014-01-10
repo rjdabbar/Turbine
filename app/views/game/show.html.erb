@@ -6,9 +6,17 @@
     <%= image_tag @game.logo_url %>
   </div>
 
-
-
+<h3>Select the stats which you would like to display. (MAX 5)</h3>
+<%= form_tag  game_stash_path, method: :put do %>
   <% @game.stats.each do |stat| %>
-    <br><%= stat.name %>: <%= stat.value %>
+     <br><%= check_box_tag "#{stat.name}", stat.value %><%= stat.name %>:<%= stat.value %>
   <% end %>
+  <br>
+  <br><%= submit_tag "Add to chart" %>
+  <br>
+<% end %>
+
+  
+
 </div>
+

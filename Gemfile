@@ -5,8 +5,9 @@ source 'http://gems.github.com/'
 gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for Active Record
-# gem 'sqlite3
-gem 'pg'
+ gem 'sqlite3'
+
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -39,7 +40,14 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'guard-livereload'
+
 end
+
+group :production do
+  gem 'pg'
+end
+
+
 
 gem 'omniauth-steam'
 gem 'figaro'
