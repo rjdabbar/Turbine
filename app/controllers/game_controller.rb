@@ -39,13 +39,15 @@ class GameController < ApplicationController
                             bar_colors: make_random_colors(@stat_hash).join("|")
                              )
     @new_chart = Stashed.new
-    # set_user_and_game_ids(@new_chart, get_user_from_stat_hash(@stat_hash), get_game_from_stat_hash(@stat_hash))
-    # @new_chart
+    set_user_and_game_ids(@new_chart, get_user_from_stat_hash(@stat_hash), get_game_from_stat_hash(@stat_hash))
+    @new_chart
   end
 
   def pick_chart
-    @new_chart = Stashed.create
-    redirect_to profile_path
+    chart_hash = params[:stashed]
+    @user_chart = Stashed.generate_chart_from_data(chart_hash)
+    raise
+    redirect_to profile_path(session[:user_id])
   end
 
 
@@ -81,6 +83,7 @@ class GameController < ApplicationController
   def set_user_and_game_ids(chart, user, game)
     chart.user_id = user.id
     chart.game_id = game.id
+    chart.save
   end
 
 

@@ -2,14 +2,8 @@ class Stashed < ActiveRecord::Base
   belongs_to :user
   belongs_to :game
 
-
-
-  def self.prepare(chart, game, user)
-    create do |stash|
-      stash.chart_data = chart
-      stash.user_id = user.id
-      stash.game_id = game.id
-    end
+  def self.generate_chart_from_data(hash)
+    chart_url = "#{hash[:chart_data]}&chtt#{hash[:title]}&chf=bg,s,#{hash[:background_color]}"
   end
 
 end

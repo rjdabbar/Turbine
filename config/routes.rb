@@ -7,6 +7,6 @@ Turbine::Application.routes.draw do
   put "game/stash"
   resources :stats
   resources :stasheds
-  post "game/pick_chart"
+  patch "game/pick_chart"
 
 end

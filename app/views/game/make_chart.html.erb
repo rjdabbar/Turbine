@@ -17,10 +17,10 @@
     <%= f.label :background_color %>
     <%= f.color_field :background_color %>
       <br>
-      <%= f.label :chart_data, "Pie" %>
-    <%= f.radio_button :chart_data, "Pie", value: @pie_chart_standin %>
+    <%= f.label :chart_data, "Pie" %>
+    <%= f.radio_button :chart_data, value: @pie_chart_standin %>
     <%= f.label :chart_data, "Bar" %>
-    <%= f.radio_button :chart_data, "Bar", value: @bar_chart_standin %>
+    <%= f.radio_button :chart_data, value: @bar_chart_standin %>
 
     <%= f.submit "Make Chart" %>
       
