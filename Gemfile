@@ -5,7 +5,8 @@ source 'http://gems.github.com/'
 gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for Active Record
- gem 'sqlite3'
+
+
 
 
 
@@ -40,10 +41,12 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'guard-livereload'
+   gem 'sqlite3'
 
 end
 
 group :production do
+  gem 'rails_12factor'
   gem 'pg'
 end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218020243) do
+ActiveRecord::Schema.define(version: 20140112205128) do
 
   create_table "achievements", force: true do |t|
     t.integer  "user_id"
@@ -64,6 +64,20 @@ ActiveRecord::Schema.define(version: 20131218020243) do
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  create_table "stasheds", force: true do |t|
+    t.string   "chart_data"
+    t.string   "title",            default: ""
+    t.string   "data_color",       default: "aaaaaa"
+    t.string   "background_color", default: "aaaaaa"
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stasheds", ["game_id"], name: "index_stasheds_on_game_id"
+  add_index "stasheds", ["user_id"], name: "index_stasheds_on_user_id"
 
   create_table "stats", force: true do |t|
     t.integer  "user_id"

@@ -17,31 +17,71 @@ class GameController < ApplicationController
 
   def stash
   #fills a hash with stats to put in a chart
-  @stat_hash = params
-  @stat_hash.delete "utf8"
-  @stat_hash.delete "_method"
-  @stat_hash.delete "authenticity_token"
-  @stat_hash.delete "commit"
-  @stat_hash.delete "controller"
-  @stat_hash.delete "action"
-
-  @stat_hash 
+  @stat_hash = prune_hash(params)
   redirect_to chart_path(@stat_hash)
   end
 
   def make_chart
-    @stat_hash = params
-    @stat_hash.delete "controller"
-    @stat_hash.delete "action"
+    @stat_hash = prune_hash(params)
+    
 
-    @new_chart = Gchart.pie(
+    @pie_chart_standin = Gchart.pie(
                             size: "500x500",
                             legend: @stat_hash.keys,
-                            data: @stat_hash.values.collect(&:to_i)
-                           
+                            data: @stat_hash.values.collect(&:to_i),
+                            bar_colors: make_random_colors(@stat_hash)
                              )
+
+    @bar_chart_standin = Gchart.bar(
+                            size: "500x500",
+                            legend: @stat_hash.keys,
+                            data: @stat_hash.values.collect(&:to_i), 
+                            bar_colors: make_random_colors(@stat_hash).join("|")
+                             )
+    @new_chart = Stashed.new
+    # set_user_and_game_ids(@new_chart, get_user_from_stat_hash(@stat_hash), get_game_from_stat_hash(@stat_hash))
+    # @new_chart
   end
 
+  def pick_chart
+    @new_chart = Stashed.create
+    redirect_to profile_path
+  end
+
+
+
+  private
+
+  def prune_hash(hash)
+    if hash.keys.include?('utf8')
+     hash.delete "utf8"
+     hash.delete "_method"
+     hash.delete "authenticity_token"
+     hash.delete "commit"
+    end
+     hash.delete "controller"
+     hash.delete "action"
+     hash
+  end
+
+  def make_random_colors(hash)
+    @stat_hash.map do |color|
+       "%06x" % (rand * 0xffffff)
+    end
+  end
+
+  def get_game_from_stat_hash(hash)
+    Stat.find_by_name(hash.keys.first).game
+  end
+
+  def get_user_from_stat_hash(hash)
+    Stat.find_by_name(hash.keys.first).game.user
+  end
+
+  def set_user_and_game_ids(chart, user, game)
+    chart.user_id = user.id
+    chart.game_id = game.id
+  end
 
 
 

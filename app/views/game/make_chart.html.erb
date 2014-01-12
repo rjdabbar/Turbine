@@ -1,14 +1,30 @@
 
- <%= @stat_hash %>
+<div class="pull-left">
+  <%= image_tag @bar_chart_standin%>
+
+</div>
 
 <div class="pull-right">
-  <%= image_tag Gchart.pie(
-                            bg: {color: 'aaaaaa'},
-                            size: "500x500",
-                            legend: @stat_hash.keys,
-                            data: @stat_hash.values.collect(&:to_i)
-                           
-                             )
- %>
+  <%= image_tag @pie_chart_standin%>
+
 </div>
+
+<%= form_for @new_chart, url: "/game/pick_chart" do |f| %>
+  <fieldset>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+      <br>
+    <%= f.label :background_color %>
+    <%= f.color_field :background_color %>
+      <br>
+      <%= f.label :chart_data, "Pie" %>
+    <%= f.radio_button :chart_data, "Pie", value: @pie_chart_standin %>
+    <%= f.label :chart_data, "Bar" %>
+    <%= f.radio_button :chart_data, "Bar", value: @bar_chart_standin %>
+
+    <%= f.submit "Make Chart" %>
+      
+  </fieldset>
+
+<% end %>
 
