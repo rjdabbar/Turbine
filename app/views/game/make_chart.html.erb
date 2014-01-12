@@ -1,15 +1,14 @@
+
+ <%= @stat_hash %>
+
 <div class="pull-right">
-  <%= image_tag Gchart.bar(
-  type: "bar",
-  bg: "aaaaaa",
-  title: "Day of Defeat: Source",
-  size: "500x500",
-  legend: @stat_hash.keys,
-  value: @stat_hash.values,
-  max_value: 'auto'
-   )
+  <%= image_tag Gchart.pie(
+                            bg: {color: 'aaaaaa'},
+                            size: "500x500",
+                            legend: @stat_hash.keys,
+                            data: @stat_hash.values.collect(&:to_i)
+                           
+                             )
  %>
 </div>
 
-
- <%= @stat_hash %>

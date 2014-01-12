@@ -33,6 +33,13 @@ class GameController < ApplicationController
     @stat_hash = params
     @stat_hash.delete "controller"
     @stat_hash.delete "action"
+
+    @new_chart = Gchart.pie(
+                            size: "500x500",
+                            legend: @stat_hash.keys,
+                            data: @stat_hash.values.collect(&:to_i)
+                           
+                             )
   end
 
 

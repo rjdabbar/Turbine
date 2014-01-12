@@ -6,7 +6,7 @@
     <%= image_tag @game.logo_url %>
   </div>
 
-<h3>Select the stats which you would like to display. (MAX 5)</h3>
+<h3>Select the stats which you would like to display. Please chose stats that make sense to compare</h3>
 <%= form_tag  game_stash_path, method: :put do %>
   <% @game.stats.each do |stat| %>
      <br><%= check_box_tag "#{stat.name}", stat.value %><%= stat.name %>:<%= stat.value %>
