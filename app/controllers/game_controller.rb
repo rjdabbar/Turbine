@@ -45,8 +45,8 @@ class GameController < ApplicationController
 
   def pick_chart
     chart_hash = params[:stashed]
-    @user_chart = Stashed.generate_chart_from_data(chart_hash)
-    raise
+    @user_chart = UserCharts.add_chart(Stashed.generate_chart_from_data(chart_hash),session[:user_id] )
+    @user_charts = UserCharts.find_all_by_user_id(session[:user_id])
     redirect_to profile_path(session[:user_id])
   end
 

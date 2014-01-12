@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112205128) do
+ActiveRecord::Schema.define(version: 20140112225753) do
 
   create_table "achievements", force: true do |t|
     t.integer  "user_id"
@@ -90,6 +90,15 @@ ActiveRecord::Schema.define(version: 20140112205128) do
 
   add_index "stats", ["game_id"], name: "index_stats_on_game_id"
   add_index "stats", ["user_id"], name: "index_stats_on_user_id"
+
+  create_table "user_charts", force: true do |t|
+    t.integer  "user_id"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_charts", ["user_id"], name: "index_user_charts_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "provider"

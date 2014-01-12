@@ -1,0 +1,18 @@
+<div class="mygrid-chart-div">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>CHARTS</th>
+      </tr>
+    </thead>
+    <% if @user_charts.class == String %>
+      <tbody>There are no charts</tbody>
+    <% else %>
+      <tbody>
+        <% @user_charts.each do |chart| %>
+          <tr><td><%= image_tag chart.link %></td></tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+</div>
